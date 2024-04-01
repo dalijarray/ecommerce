@@ -1,0 +1,10 @@
+.quantity {
+    display: flex;
+    justify-content: space-between;
+}
+ .quantity input {
+    margin: 0 10px;
+}
+.custom-icon {
+    color: red !important; /* ou toute autre couleur de votre choix */
+}
