@@ -37,7 +37,20 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./client/signup/signup.module').then( m => m.SignupPageModule)
-  }
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+   {
+    path: 'sea',
+    loadChildren: () => import('./client/login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+
+
 //   {    path: 'tabs',
 //   children: [
 //     {
