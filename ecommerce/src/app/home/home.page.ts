@@ -10,32 +10,82 @@ import { Product } from '../models/product.model';
 })
 export class HomePage {
   canDismiss = false;
-
-  presentingElement = null;
+ 
+  showCategorie = false;
   showSearch: boolean = false;
-
-
-  
+  selectedCategory: string='';
   products: Product[]=[];
-  images:String[]=[];
+  originalProducts: Product[] = [];
+  selectedSort: string='';
+  searchInput: string = '';
+  categories: string[] = ['Dress', 'T-shirt', 'Jeans', 'Shoes'];
+  showSort=false;
   constructor(private productService: ProductServiceService) {}
   
   ngOnInit() {
     this.loadProducts();
-    // this.presentingElement = document.querySelector('.ion-page');
-    console.log("ola")
+    }
+ loadProducts() {
+    this.productService.getAllProducts().subscribe(products => {
+      this.products = products;
+      this.originalProducts =products; },
+      (error) => {
+        console.log('Error fetching products:', error);
+      }
+    );
   }
   toggleSearch() {
     this.showSearch = !this.showSearch;
+    console.log(this.searchInput);
+    console.log("test");
+    if (!this.showSearch) {
+      this.searchInput = '';
+      this.products = this.originalProducts;
+      console.log(this.searchInput);
+    }
   }
-  loadProducts() {
-    this.productService.getAllProducts().subscribe(products => {
-      this.products = products;
-      
-    });
+  sortProducts(sortOption: string) {
+    switch (sortOption) {
+      case 'newest':
+        // Sort products by newest arrivals
+        this.products.sort((a, b) => new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime());
+        break;
+      case 'highToLow':
+        // Sort products by price high to low
+        this.products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        break;
+      case 'lowToHigh':
+        // Sort products by price low to high
+        this.products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        break;
+      default:
+        break;
+    }
   }
-  onTermsChanged(event: Event) {
-    const ev = event as CheckboxCustomEvent;
-    this.canDismiss = ev.detail.checked;
+  searchProducts() {
+    if (!this.searchInput) {
+      this.products = this.originalProducts;
+      return;
+    }
+    const searchText = this.searchInput.toLowerCase();
+    this.products = this.originalProducts.filter(product =>
+      product.title.toLowerCase().includes(searchText) ||
+      product.description.toLowerCase().includes(searchText) //||
+      //product.category.toLowerCase().includes(searchText)
+    );
   }
+  showCategories() {
+    this.showCategorie = !this.showCategorie;
+  }
+  showSorting() {
+    this.showSort = !this.showSort;
+  }
+
+  selectCategory(category: string) {
+    // Filter products based on the selected category
+    this.products = this.originalProducts.filter(product => product.category === category);
+    // Hide the categories list
+    this.showCategorie = false;
+  }
+  
 }
