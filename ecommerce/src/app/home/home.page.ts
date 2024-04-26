@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CheckboxCustomEvent } from '@ionic/angular';
 import { ProductServiceService } from '../services/product-service.service';
+import { CartItemServiceService } from '../services/cart-item-service.service';
 import { Product } from '../models/product.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,15 +18,31 @@ export class HomePage {
   selectedCategory: string='';
   products: Product[]=[];
   originalProducts: Product[] = [];
-  selectedSort: string='';
+  selectedSort: string='test';
   searchInput: string = '';
-  categories: string[] = ['Dress', 'T-shirt', 'Jeans', 'Shoes'];
+  categories: string[] = ['All','Shirts', 'Jeans', 'Shorts', 'Dresses','Jackets','Bags','Shoes','Accessories'];
   showSort=false;
-  constructor(private productService: ProductServiceService) {}
+  items:number=0;
+  constructor(private productService: ProductServiceService,private router: Router,private cartItemService:CartItemServiceService) {}
   
   ngOnInit() {
+    this.setItems();
     this.loadProducts();
     }
+    navigateToCart(){
+      this.router.navigate(['/mycart']);
+    }
+setItems(){
+  this.cartItemService.getTotalCartItems().subscribe(
+    total => {
+      this.items = total;
+    },
+    error => {
+      console.error('Error fetching total cart items:', error);
+      // Handle error
+    }
+  );
+}
  loadProducts() {
     this.productService.getAllProducts().subscribe(products => {
       this.products = products;
@@ -44,7 +62,12 @@ export class HomePage {
       console.log(this.searchInput);
     }
   }
+  navigateToProductDetails(productId: string) {
+    this.router.navigate(['/details-product', productId]);
+  }
+  
   sortProducts(sortOption: string) {
+    console.log(sortOption);
     switch (sortOption) {
       case 'newest':
         // Sort products by newest arrivals
@@ -61,6 +84,7 @@ export class HomePage {
       default:
         break;
     }
+    this.showSort = false;
   }
   searchProducts() {
     if (!this.searchInput) {
@@ -83,7 +107,12 @@ export class HomePage {
 
   selectCategory(category: string) {
     // Filter products based on the selected category
-    this.products = this.originalProducts.filter(product => product.category === category);
+    if (category==='All') {
+      this.products = this.originalProducts;
+    } else {
+      this.products = this.originalProducts.filter(product => product.category === category);
+    }
+    
     // Hide the categories list
     this.showCategorie = false;
   }

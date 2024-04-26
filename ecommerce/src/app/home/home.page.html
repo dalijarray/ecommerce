@@ -1,19 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar >
-    <ion-title> App Name </ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="toggleSearch()" *ngIf="!showSearch">
-          <ion-icon name="search-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-        <ion-buttons slot="primary" style="margin-right: 50px;">
-          <div class="circle-container-nav">
-            <p style="color: white;">0</p>
-          </div>
-          <ion-icon name="cart" style="color: orange;" class="toolbar-icon" size="large"></ion-icon>
-        </ion-buttons>
+    <ion-title> QuikBuy </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearch()" *ngIf="!showSearch">
+        <ion-icon name="search-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button slot="primary" class="cart" (click)="navigateToCart()">
+        <ion-icon name="cart" size="large" style="color: orange;"></ion-icon>
+      </ion-button>
+      <ion-badge color="light" slot="end">{{items}}</ion-badge>
       </ion-buttons>
-         <!-- <ion-badge color="light" slot="end">{{ count || 0 }}</ion-badge>-->
-      <ion-searchbar  [hidden]="!showSearch" (ionCancel)="toggleSearch()"  clear-icon="trash-bin" [(ngModel)]="searchInput" (ionChange)="searchProducts()">
+    </ion-toolbar>
+  </ion-header>
+  <ion-toolbar [hidden]="!showSearch">
+      <ion-searchbar  [hidden]="!showSearch" (ionCancel)="toggleSearch()"  clear-icon="trash-bin" [(ngModel)]="searchInput" (ionChange)="searchProducts()" size="large">
+      </ion-searchbar>
       <ion-buttons slot="end" style="color:orange ;padding-left: 100px;">
         <ion-button slot="end">
           <ion-icon name="search-outline"></ion-icon>
@@ -22,15 +23,18 @@
           <ion-icon name="close-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      </ion-searchbar>
-      <ion-button (click)="showCategories()">
+    </ion-toolbar >
+
+      <ion-toolbar>
+      <ion-button  class="cat"(click)="showCategories()" >
         <ion-icon name="list-outline" slot="icon-only"></ion-icon>
       </ion-button>
-      <ion-button (click)="showSorting()">
-        <ion-icon name="list-outline" slot="icon-only"></ion-icon>
+      <ion-button class="sort"(click)="showSorting()">
+        <ion-icon name="funnel-outline"slot="icon-only"></ion-icon>
       </ion-button>
-  </ion-toolbar>
-</ion-header>
+    </ion-toolbar >
+  
+
 
 <ion-content [fullscreen]="true">
   <ion-list *ngIf="showCategorie">
@@ -48,30 +52,32 @@
     <ion-list-header>
       <ion-label>Sort By</ion-label>
     </ion-list-header>
+    <ion-radio-group [(ngModel)]="selectedSort">
     <ion-item>
       <ion-label>Newest Arrivals</ion-label>
       <ion-radio slot="start" value="newest"></ion-radio>
     </ion-item>
     <ion-item>
       <ion-label>Price High To Low</ion-label>
-      <ion-radio slot="start" value="highToLow"></ion-radio>
+      <ion-radio slot="start" value="highToLow" ></ion-radio>
     </ion-item>
     <ion-item>
       <ion-label>Price Low To High</ion-label>
-      <ion-radio slot="start" value="lowToHigh"></ion-radio>
+      <ion-radio slot="start" value="lowToHigh"  ></ion-radio>
     </ion-item>
+  </ion-radio-group>
     <ion-button expand="block" color="primary" (click)="sortProducts(selectedSort)">Apply</ion-button>
   </ion-list>
 
   <ion-list *ngIf="!showCategorie">
-    <ion-item *ngFor="let product of products">
+    <ion-item *ngFor="let product of products" (click)="navigateToProductDetails(product.id)">
       <ion-thumbnail slot="start">
         <img [src]="product.images[0]" alt="Product Image">
       </ion-thumbnail>
       <ion-label>
         <h2>{{ product.title }}</h2>
         <p>{{ product.description }}</p>
-        <p>{{ product.price }}</p>
+        <p>{{ product.price }} DT</p>
       </ion-label>
     </ion-item>
   </ion-list>
