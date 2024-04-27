@@ -1,0 +1,45 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Add product
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input type="text" [(ngModel)]="product.title" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea [(ngModel)]="product.description"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Price</ion-label>
+    <ion-input type="text" [(ngModel)]="product.price"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Quantity</ion-label>
+    <ion-input type="text" [(ngModel)]="product.quantity"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Category</ion-label>
+    <ion-input type="text" [(ngModel)]="product.category"></ion-input>
+  </ion-item>
+
+  <ion-item>
+
+    <input type="file" label="images" (change)="onFileSelected($event)" accept="image/*">
+  </ion-item>
+
+  <ion-button expand="block"  (click)="ajouterProduit()" (click)="presentAlert()">Add</ion-button>
+</ion-content>
