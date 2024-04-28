@@ -5,78 +5,73 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">signup</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
 
   <ion-card>
     <ion-card-header>
       <ion-card-title>Welcome !</ion-card-title>
-      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
     </ion-card-header>
-  
+
     <ion-card-content>
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Sign up</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
       <ion-item fill="outline" class="p-2">
         <ion-label position="floating">First Name</ion-label>
-        <ion-input placeholder="Enter text"></ion-input>
+        <ion-input [(ngModel)]="firstName" placeholder="Enter text"></ion-input>
       </ion-item>
 
       <ion-item fill="outline" class="p-2">
         <ion-label position="floating">Last Name</ion-label>
-        <ion-input placeholder="Enter text"></ion-input>
+        <ion-input [(ngModel)]="lastName" placeholder="Enter text"></ion-input>
       </ion-item>
-      
+
       <ion-item fill="outline" class="p-2">
-        <ion-label position="floating">Email Addresse</ion-label>
-        <ion-input placeholder="Enter text"></ion-input>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input [(ngModel)]="email" placeholder="Enter text"></ion-input>
       </ion-item>
       <ion-item fill="outline" class="p-2">
         <ion-label position="floating">Phone</ion-label>
-        <ion-input placeholder="Enter text"></ion-input>
+        <ion-input [(ngModel)]="phoneNumber" placeholder="Enter text"></ion-input>
       </ion-item>
 
       <ion-item fill="outline" class="p-2">
         <ion-label position="floating" type="password">Password</ion-label>
-        <ion-input placeholder="Enter text"></ion-input>
+        <ion-input [(ngModel)]="password" placeholder="Enter text"></ion-input>
       </ion-item>
 
-      
       <ion-item fill="outline" class="p-2">
-        <ion-label position="floating">Addresse</ion-label>
-        <ion-input placeholder="Enter text"></ion-input>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input [(ngModel)]="address" placeholder="Enter text"></ion-input>
       </ion-item>
 
 
 
       <ion-list>
         <ion-item>
-          <ion-select placeholder="Select your gender">
+          <ion-select [(ngModel)]="gender" placeholder="Select your gender">
             <div slot="label">Gender </div>
-            <ion-select-option value="apple">Apple</ion-select-option>
-            <ion-select-option value="banana">Banana</ion-select-option>
+            <ion-select-option value="male">Male</ion-select-option>
+            <ion-select-option value="female">Female</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <div slot="label" class="title">Date of Birthday : </div>
+      <ion-datetime-button datetime="date" class="p-2" [(ngModel)]="dateOfBirth"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="date" presentation="date"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="role" placeholder="What do you want to be?" aria-required="true">
+            <ion-select-option value="seller">Seller</ion-select-option>
+            <ion-select-option value="client">Client</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
 
 
-      <ion-datetime-button datetime="date" class="p-2" ></ion-datetime-button>
-      <ion-modal [keepContentsMounted]="true">
-        <ng-template>
-          <ion-datetime id="date"  presentation="date" ></ion-datetime>
-        </ng-template>
-      </ion-modal>
-
-
-      <ion-button>Sign Up</ion-button>
+      <ion-button >Sign Up</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>
