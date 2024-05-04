@@ -5,8 +5,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-
   <ion-card>
     <ion-card-header>
       <ion-card-title>Welcome !</ion-card-title>
@@ -27,6 +25,8 @@
         <ion-label position="floating">Email Address</ion-label>
         <ion-input [(ngModel)]="email" placeholder="Enter text"></ion-input>
       </ion-item>
+  
+
       <ion-item fill="outline" class="p-2">
         <ion-label position="floating">Phone</ion-label>
         <ion-input [(ngModel)]="phoneNumber" placeholder="Enter text"></ion-input>
@@ -36,42 +36,48 @@
         <ion-label position="floating" type="password">Password</ion-label>
         <ion-input [(ngModel)]="password" placeholder="Enter text"></ion-input>
       </ion-item>
+     
 
       <ion-item fill="outline" class="p-2">
         <ion-label position="floating">Address</ion-label>
         <ion-input [(ngModel)]="address" placeholder="Enter text"></ion-input>
       </ion-item>
+      <ion-label class="title">Date of Birth:</ion-label>
+      <ion-item>
+    
+        <ion-input type="date" [(ngModel)]="dateOfBirth"></ion-input>
+      </ion-item>
+      
+      
+      
+      <ion-label class="title">Gender:</ion-label>
+      <ion-item>
+       
+        <ion-select [(ngModel)]="gender" placeholder="Select your gender">
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="female">Female</ion-select-option>
+        </ion-select>
+      </ion-item>
+   
+      <ion-label class="title">Role:</ion-label>
+      <ion-item>
+       
+        <ion-select [(ngModel)]="role" placeholder="What do you want to be?" aria-required="true">
+          <ion-select-option value="new-seller">Seller</ion-select-option>
+          <ion-select-option value="client">Client</ion-select-option>
+        </ion-select>
+      </ion-item>
+     
 
-
-
-      <ion-list>
-        <ion-item>
-          <ion-select [(ngModel)]="gender" placeholder="Select your gender">
-            <div slot="label">Gender </div>
-            <ion-select-option value="male">Male</ion-select-option>
-            <ion-select-option value="female">Female</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-
-      <div slot="label" class="title">Date of Birthday : </div>
-      <ion-datetime-button datetime="date" class="p-2" [(ngModel)]="dateOfBirth"></ion-datetime-button>
-      <ion-modal [keepContentsMounted]="true">
-        <ng-template>
-          <ion-datetime id="date" presentation="date"></ion-datetime>
-        </ng-template>
-      </ion-modal>
-      <ion-list>
-        <ion-item>
-          <ion-select [(ngModel)]="role" placeholder="What do you want to be?" aria-required="true">
-            <ion-select-option value="seller">Seller</ion-select-option>
-            <ion-select-option value="client">Client</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-
-
-      <ion-button >Sign Up</ion-button>
+      <ion-button (click)="onSubmit()">Sign Up</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+<!-- Placer le modal en dehors du contenu -->
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <!-- Utilisez l'attribut presentation pour afficher uniquement la date -->
+    <ion-datetime id="date" presentation="date"></ion-datetime>
+  </ng-template>
+</ion-modal>

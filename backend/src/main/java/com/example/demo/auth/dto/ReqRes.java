@@ -33,7 +33,7 @@ public class ReqRes {
     private String phoneNumber;
     private String password;
     private String address;
-    private String gender; // Assuming gender selection is required
+    private String gender; 
     private Date dateOfBirth; 
    // private List<Produit> products;
     private OurUsers ourUsers;
