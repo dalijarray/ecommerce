@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
+import { VendeurAttenteService } from '../services/vendeur-attente.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,7 @@ export class SignupPage implements OnInit {
   gender: string = ''; // Assuming gender selection is required
   dateOfBirth: string = '';
   role: string='';
-  constructor(private authService: AuthService,private router: Router, private clientService:ClientService) { }
+  constructor(private authService: AuthService,private router: Router, private clientService:ClientService, private vendeurAttenteService: VendeurAttenteService) { }
   
 
   ngOnInit() {
@@ -49,7 +50,7 @@ export class SignupPage implements OnInit {
        
         if (localStorage.getItem('userRole') === 'new-seller') {
           // Ajouter les coordonnées dans la table professeur-attente ici
-         // this.addVendeurAttente(response.ourUsers);
+          this.addVendeurAttente(response.ourUsers);
         }
         if (localStorage.getItem('userRole') === 'client') {
           // Ajouter les coordonnées dans la table professeur-attente ici
@@ -78,7 +79,7 @@ export class SignupPage implements OnInit {
         }
       );
   }
-/*
+
   addVendeurAttente(user: any) {
     this.vendeurAttenteService.creerVendeurAttente(user)
       .subscribe(
@@ -90,6 +91,6 @@ export class SignupPage implements OnInit {
         }
       );
   }
-  */
+
   
 }
