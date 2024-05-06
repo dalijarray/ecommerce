@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar class="custom-orange-icon">
+    <ion-title>
+      List of products
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="ion-color-orange" [routerLink]="['/add-article']" [routerDirection]="'root'">
+        <ion-icon name="add-outline"></ion-icon>
+        Add product
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+  <ion-searchbar size="large" placeholder="Search..." (ionChange)="onSearchInput($event)" [(ngModel)]="searchTerm" (keypress)="onKeyPress($event)"></ion-searchbar>
+</ion-header>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<ion-content >
+  <ion-list>
+    <ion-item *ngFor="let product of products">
+      <ion-thumbnail slot="start">
+        <img [src]="product.images[0]" alt="Product Image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="NavigateToEdit(product.id)" class="ion-color-orange">
+          <ion-icon size="large" name="create-outline" class="ion-color-orange"></ion-icon>
+       
+        </ion-button>
+        <ion-button (click)="supprimer(product.id)" class="ion-color-orange">
+          <ion-icon size="large" name="trash-outline"></ion-icon>
+       
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+  
+  <ion-footer class="ion-color-orange">
+    <ion-toolbar>
+      <ion-buttons slot="start" class="ion-justify-content-center" >
+        <ion-button style="padding-left: 200px;" [routerLink]="['/home-seller']" [routerDirection]="'root'" >
+          <ion-icon size="large"name="home-outline" style="color: orange;"></ion-icon>
+         
+        </ion-button>
+        <ion-button class="ion-color-orange" [routerLink]="['/orders']" [routerDirection]="'root'" >
+          <ion-icon name="reorder-four-outline" size="large" ></ion-icon>
+         
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons   name="settings-outline" [routerLink]="['/settings']" [routerDirection]="'root'" >
+        <ion-button class="ion-color-orange">
+          <ion-icon name="settings-outline"  size="large"></ion-icon>
+        
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+  
