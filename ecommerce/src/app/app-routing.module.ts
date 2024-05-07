@@ -65,7 +65,11 @@ const routes: Routes = [
   {
     path: 'order',
     loadChildren: () => import('./seller/order/order.module').then( m => m.OrderPageModule)
+  },  {
+    path: 'adminprofile',
+    loadChildren: () => import('./admin/adminprofile/adminprofile.module').then( m => m.AdminprofilePageModule)
   },
+
 
 //   {    path: 'tabs',
 //   children: [

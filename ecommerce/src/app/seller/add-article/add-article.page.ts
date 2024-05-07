@@ -26,7 +26,7 @@ export class AddArticlePage {
             // Fermer l'alerte
             alert.dismiss().then(() => {
               // Naviguer vers la page "home-seller"
-              this.router.navigate(['/home-seller']);
+              this.router.navigate(['/tabs/home-seller']);
             });
             return false; // Retourne false pour éviter la fermeture automatique de l'alerte
           }

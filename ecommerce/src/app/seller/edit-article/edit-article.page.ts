@@ -62,7 +62,7 @@ export class EditArticlePage implements OnInit {
   (response) => {
     console.log('Article mis à jour avec succès:', response);
     // Rediriger vers la page d'accueil du vendeur après la mise à jour réussie
-    this.navController.navigateBack('/home-seller');
+    this.navController.navigateBack('/tabs/home-seller');
   },
   (error) => {
     console.error('Erreur lors de la mise à jour de l\'article:', error);

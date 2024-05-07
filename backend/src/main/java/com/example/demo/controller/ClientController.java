@@ -1,4 +1,4 @@
-package com.example.demo.admin.controller;
+package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.admin.models.Client;
-import com.example.demo.admin.service.ClientService;
+import com.example.demo.model.Client;
+import com.example.demo.services.ClientService;
 
 @RestController
 @CrossOrigin(origins = "*")

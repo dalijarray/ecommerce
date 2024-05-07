@@ -57,7 +57,7 @@ export class DetailsProductPage implements OnInit {
     });
   }
   goToCartPage() {
-    this.navCtrl.navigateForward('/mycart'); // Replace '/cart' with your actual cart page route
+    this.navCtrl.navigateForward('/tabs/mycart'); // Replace '/cart' with your actual cart page route
   }
   loadProductDetails() {
     this.productService.getProductById(this.productId).subscribe(product => {

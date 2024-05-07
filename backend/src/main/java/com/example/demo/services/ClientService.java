@@ -1,4 +1,4 @@
-package com.example.demo.admin.service;
+package com.example.demo.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.admin.models.Client;
-import com.example.demo.admin.repo.ClientRepo;
+import com.example.demo.model.Client;
+import com.example.demo.repository.ClientRepo;
 @Service
 public class ClientService {
     @Autowired

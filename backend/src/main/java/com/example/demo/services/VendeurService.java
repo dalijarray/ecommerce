@@ -1,10 +1,10 @@
-package com.example.demo.admin.service;
+package com.example.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.admin.models.Vendeur;
-import com.example.demo.admin.repo.VendeurRepo;
+import com.example.demo.model.Vendeur;
+import com.example.demo.repository.VendeurRepo;
 
 
 import java.util.List;

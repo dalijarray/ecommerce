@@ -4,7 +4,7 @@
       List of products
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button class="ion-color-orange" [routerLink]="['/add-article']" [routerDirection]="'root'">
+      <ion-button class="ion-color-orange" [routerLink]="['/tabs/add-article']" [routerDirection]="'root'">
         <ion-icon name="add-outline"></ion-icon>
         Add product
       </ion-button>
@@ -42,16 +42,16 @@
   <ion-footer class="ion-color-orange">
     <ion-toolbar>
       <ion-buttons slot="start" class="ion-justify-content-center" >
-        <ion-button style="padding-left: 200px;" [routerLink]="['/home-seller']" [routerDirection]="'root'" >
+        <ion-button style="padding-left: 200px;" [routerLink]="['/tabs/home-seller']" [routerDirection]="'root'" >
           <ion-icon size="large"name="home-outline" style="color: orange;"></ion-icon>
          
         </ion-button>
-        <ion-button class="ion-color-orange" [routerLink]="['/orders']" [routerDirection]="'root'" >
+        <ion-button class="ion-color-orange" [routerLink]="['/tabs/orders']" [routerDirection]="'root'" >
           <ion-icon name="reorder-four-outline" size="large" ></ion-icon>
          
         </ion-button>
       </ion-buttons>
-      <ion-buttons   name="settings-outline" [routerLink]="['/settings']" [routerDirection]="'root'" >
+      <ion-buttons   name="settings-outline" [routerLink]="['/tabs/settings']" [routerDirection]="'root'" >
         <ion-button class="ion-color-orange">
           <ion-icon name="settings-outline"  size="large"></ion-icon>
         

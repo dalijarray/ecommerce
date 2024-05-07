@@ -1,12 +1,12 @@
-package com.example.demo.admin.controller;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.admin.models.VendeurAttente;
-import com.example.demo.admin.service.VendeurAttenteService;
+import com.example.demo.model.VendeurAttente;
+import com.example.demo.services.VendeurAttenteService;
 
 
 import java.util.List;

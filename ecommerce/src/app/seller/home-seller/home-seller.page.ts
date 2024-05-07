@@ -169,7 +169,7 @@ async presentConfirmationAlert(message: string, callback: () => void) {
   }
  
   NavigateToEdit(productId: string) {
- this.router.navigate([`/edit-article`,productId]);
+ this.router.navigate([`/tabs/edit-article`,productId]);
   }
   
   supprimerArticle(productId: string) {

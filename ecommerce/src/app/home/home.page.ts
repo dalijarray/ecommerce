@@ -30,7 +30,7 @@ export class HomePage {
     this.loadProducts();
     }
     navigateToCart(){
-      this.router.navigate(['/mycart']);
+      this.router.navigate(['/tabs/mycart']);
     }
 setItems(){
   this.cartItemService.getTotalCartItems().subscribe(
@@ -63,7 +63,7 @@ setItems(){
     }
   }
   navigateToProductDetails(productId: string) {
-    this.router.navigate(['/details-product', productId]);
+    this.router.navigate(['/tabs/details-product', productId]);
   }
   
   sortProducts(sortOption: string) {

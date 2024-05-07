@@ -16,7 +16,7 @@ export class ClientService {
   getClient(): Observable<Client[]> {
     return this.http.get<Client[]>(this.apiUrl);
   }
-  getClienttById(id: string): Observable<Client> {
+  getClientById(id: string): Observable<Client> {
     return this.http.get<Client>(`${this.apiUrl}/${id}`);
   }
   supprimerClient(id: string): Observable<void> {
