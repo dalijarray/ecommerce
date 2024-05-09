@@ -1,6 +1,24 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
+  <!-- <ion-toolbar>cd 
+  <ion-title text-center>{{user.firstName}}'s Profile</ion-title>
+  <ion-buttons end>
+			<button ion-button icon-only>
+    <ion-icon name="more"></ion-icon>
+    </button>
+  </ion-buttons>
+	</ion-toolbar> -->
+  <ion-toolbar class="p-s1">
+    <ion-row>
+      <ion-col col-4 text-left class="ion-color-orange">
+        <ion-icon name="person-circle-outline" ></ion-icon>
+      </ion-col>
+      <ion-col col-8 text-left>
+        <ion-label class="p-title row text-center">      My Information</ion-label>
+        <ion-label class="row text-center">.   {{user?.firstName}}'s Profile</ion-label>
+        <ion-label class="row text-center">.   {{user?.email}}</ion-label>
+        <ion-label class="row text-center">.   {{user?.phoneNumber}}</ion-label>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
@@ -10,16 +28,66 @@
       <ion-title size="large">profile</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list lines="full" >
-    <ion-item>
-      <ion-label position="stacked">Nom</ion-label>
-      <ion-input type="text" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Adresse Email</ion-label>
-      <ion-input type="email"></ion-input>
-    </ion-item>
-    <!-- Ajoutez d'autres champs selon les besoins -->
-    <ion-button expand="full" >Mettre à jour</ion-button>
-  </ion-list>
+  <!-- modale -->
+
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <p class="row">Profile Setting</p>
+        <br>
+        <p class="row">User information, Email, Username, Phone no</p>
+        <button id="open-modal" class="ion-color-orange"  expand="block" ion-button clear item-end>
+          <ion-icon name="chevron-forward-outline" class="ion-color-orange" style="font-size: 2em;"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+  <!-- <ion-button id="open-modal" expand="block">Open</ion-button> -->
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-input
+            label="Enter your firstname"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Your firstname"
+            [(ngModel)]="vendeurDetails.firstName"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Enter your Lastname"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Your Lastname"
+            [(ngModel)]="vendeurDetails.lastName"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Enter your Number Phone"
+            labelPlacement="stacked"
+            type="text"
+            placeholder="Your Number Phone"
+            [(ngModel)]="vendeurDetails.phoneNumber"
+          ></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
 </ion-content>

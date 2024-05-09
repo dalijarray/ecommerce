@@ -1,3 +1,5 @@
+import { CartItem } from "src/app/models/cartItem.model";
+
 export interface Client{
     id: string;
     firstName: string;
@@ -8,6 +10,6 @@ export interface Client{
     DateOfBirth: Date;
     gender: string;
     address: string;
-  
+  cartItem:CartItem[];
   }
   

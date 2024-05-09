@@ -11,7 +11,6 @@ import { SettingsPage } from './settings.page';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     SettingsPageRoutingModule
   ],

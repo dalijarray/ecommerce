@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-center">Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="payment-box">
+    <div class="payment-details">
+      <div class="box">
+        <div class="line">
+          <h4>Total Price</h4>
+          <p>{{ totalPrice }} DT</p>
+        </div>
+        <div class="line">
+          <h4>Delivery Charges</h4>
+          <p>8.00 DT</p>
+        </div>
+        <div class="line">
+          <h4>Total Amount</h4>
+          <p>{{ totalPrice + 8.00 }} DT</p>
+        </div>
+      </div>
+      
+
+      <div class="box">
+        <h4>Payment Mode</h4>
+        <ion-radio-group [(ngModel)]="paymentMode">
+          <ion-item>
+            <ion-label>Pay Now with Card</ion-label>
+            <ion-radio value="card"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Pay Later on Delivery (Cash)</ion-label>
+            <ion-radio value="cash"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+
+      <div class="box">
+        <h4>Delivery Address</h4>
+        <ion-input [(ngModel)]="deliveryAddress" placeholder="    Enter your delivery address"></ion-input>
+      </div>
+    </div>
+    
+    <ion-button expand="block" color="primary">Confirm Order</ion-button>
+  </div>
+</ion-content>

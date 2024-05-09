@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Settings</ion-title>
   </ion-toolbar>
-</ion-header> 
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -13,13 +13,30 @@
   <ion-text color="dark" class="text-center p-3">
     <h1>Settings</h1>
   </ion-text>
-  <ion-button fill="outline" expand="block" class="p-2" routerLink="/tabs/signup">
+  <ion-button
+    fill="outline"
+    expand="block"
+    class="p-2"
+    routerLink="/tabs/signup"
+  >
     <i class="bi bi-box-arrow-down" slot="end"></i>Signe Up
   </ion-button>
-  <ion-button fill="outline" expand="block" class="p-2" routerLink="/tabs/login"
+  <ion-button fill="outline" expand="block" class="p-2"  (click)="this.abc()" routerLink="/tabs/login"
     ><ion-icon slot="end" name="log-in-outline"></ion-icon>Log In
   </ion-button>
-  <ion-button fill="outline" expand="block" class="p-2"
-    ><i slot="end" class="bi bi-box-arrow-in-left"></i>Log Out
+
+  <ion-button
+    fill="outline"
+    expand="block"
+    class="p-2"
+    routerLink="/tabs/signup"
+  >
+    <i
+      (click)="this.abc()"
+      class="bi bi-box-arrow-down"
+      slot="end"
+      (click)="this.abc()"
+    ></i
+    >Signe Up
   </ion-button>
 </ion-content>

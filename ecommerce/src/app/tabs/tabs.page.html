@@ -1,6 +1,10 @@
 <ion-tabs>
   <ion-tab-bar>
-    <ion-tab-button tab="home">
+    <ion-tab-button tab="home-seller" *ngIf="!isClient">
+      <ion-icon name="home-outline"></ion-icon>
+      Home
+    </ion-tab-button>
+    <ion-tab-button tab="home" *ngIf="isClient">
       <ion-icon name="home-outline"></ion-icon>
       Home
     </ion-tab-button>

@@ -1,0 +1,46 @@
+.payment-box {
+    padding: 20px;
+  }
+  
+  .payment-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .box {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+ 
+  .line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .line h2, .line h3 {
+    margin: 0;
+  }
+  
+  .line p {
+    margin: 0;
+  }
+  
+  
+  .box h2, .box h3 {
+    margin: 0;
+  }
+  
+  .box ion-item {
+    --padding-start: 0;
+  }
+
+  
+  ion-button {
+    margin-top: 20px;
+  }
+  

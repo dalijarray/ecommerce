@@ -1,10 +1,69 @@
-.quantity {
-    display: flex;
-    justify-content: space-between;
-}
- .quantity input {
-    margin: 0 10px;
-}
-.custom-icon {
-    color: red !important; /* ou toute autre couleur de votre choix */
-}
+/* Set background color to white */
+ion-content {
+    --ion-background-color: #ffffff;
+  }
+  
+  /* Set toolbar and button colors to orange */
+  ion-toolbar {
+    --ion-color-primary: #FFA500;
+  }
+  
+  ion-button {
+    --ion-color-primary: #FFA500;
+    --ion-color-primary-shade: #FF8C00;
+  }
+  
+  /* Style for product title */
+  h2 {
+    color: #000000; /* Set product title color to black */
+    font-weight: bold; /* Make product title bold */
+  }
+  
+  /* Style for product description */
+  p {
+    color: #555555; /* Set product description color to dark gray */
+  }
+  
+  /* Style for quantity input */
+  ion-input {
+    border-color: #FFA500; /* Set input border color to orange */
+    color: #100f0f; /* Set input text color to orange */
+    font-weight: bold; /* Make input text bold */
+    width: 20px; /* Adjust input width */
+    text-align: center; /* Center align input text */
+    font-size: 18px;
+  }
+  
+  /* Style for increment/decrement buttons */
+  ion-button {
+    border-color: #FFA500; /* Set button border color to orange */
+    color: #FFA500; /* Set button text color to orange */
+    background: #ffffff; /* Set button background color to white */
+    box-shadow: none; /* Remove button box shadow */
+   
+  }
+  .quantity{
+    width: 300px;
+    margin-right: 40px;
+  }
+  .delete{
+    width: 100px;
+    margin-left: 250px;
+  }
+  /* Adjust button size */
+  ion-button ion-icon {
+    font-size: 24px;
+  }
+  
+  /* Style for thumbnail images */
+  ion-thumbnail {
+    border-radius: 8px; /* Set border radius for thumbnail */
+    margin-right: 10px; /* Add right margin to thumbnail */
+  }
+  
+  /* Style for item labels */
+  ion-item ion-label {
+    padding-top: 0; /* Remove top padding for labels */
+    padding-bottom: 0; /* Remove bottom padding for labels */
+  }
+  

@@ -30,9 +30,13 @@ console.log(signInRequest)
     this.authService.signIn(signInRequest).subscribe(
       (response) => {
         console.log('Connexion réussie !', response);
-        this.router.navigate(['/tabs']);
+        this.router.navigate(['/tabs/home']);
         const token = response.token;
         localStorage.setItem('token', token);
+        localStorage.setItem('userId', response.ourUsers.id);
+        localStorage.setItem('userRole', response.ourUsers.role);
+        localStorage.setItem('refreshToken', response.refreshToken);
+
       },
       (error) => {
         console.error('Erreur de connexion :', error);

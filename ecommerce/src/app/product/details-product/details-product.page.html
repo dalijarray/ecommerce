@@ -1,4 +1,3 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -15,37 +14,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
+<ion-content [fullscreen]="true">
   <ion-card>
-    
-    <ion-img [src]="selectedImage" alt="Selected Product Image" class="selected-image"></ion-img>
-  
+    <ion-img
+      [src]="selectedImage"
+      alt="Selected Product Image"
+      class="selected-image"
+    ></ion-img>
+
     <ion-card-content>
       <ion-grid>
         <ion-row>
           <ion-col size="4" *ngFor="let image of product.images">
-            <ion-img [src]="image" (click)="selectImage(image)" class="thumbnail-image"></ion-img>
+            <ion-img
+              [src]="image"
+              (click)="selectImage(image)"
+              class="thumbnail-image"
+            ></ion-img>
           </ion-col>
         </ion-row>
       </ion-grid>
       <h1>{{ product.title }}</h1>
       <p>{{ product.description }}</p>
       <p>Price: {{ product.price }}</p>
-      <p>Category: {{ product.category }}</p>
+
       <ion-item>
         <ion-label>Quantity:</ion-label>
         <ion-button (click)="decrementQuantity()" color="light">
           <ion-icon name="remove"></ion-icon>
         </ion-button>
-        <ion-input [(ngModel)]="selectedQuantity" type="number" min="1" max="10"></ion-input>
+        <ion-input
+          [(ngModel)]="selectedQuantity"
+          type="number"
+          min="1"
+          max="10"
+        ></ion-input>
         <ion-button (click)="incrementQuantity()" color="light">
           <ion-icon name="add"></ion-icon>
         </ion-button>
       </ion-item>
 
-
-      <ion-button expand="block" color="primary" (click)="buyProduct(product.id)">Add to Cart</ion-button>
-    
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="isItLoggedIn(product.id)"
+        >Add to Cart</ion-button
+      >
     </ion-card-content>
   </ion-card>
 </ion-content>

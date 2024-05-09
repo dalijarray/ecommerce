@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'tabs',
+    redirectTo:'tabs/home',
     pathMatch:'full'
 
   },
@@ -65,10 +65,15 @@ const routes: Routes = [
   {
     path: 'order',
     loadChildren: () => import('./seller/order/order.module').then( m => m.OrderPageModule)
-  },  {
+  },
+  {
     path: 'adminprofile',
     loadChildren: () => import('./admin/adminprofile/adminprofile.module').then( m => m.AdminprofilePageModule)
+  },  {
+    path: 'payment',
+    loadChildren: () => import('./product/payment/payment.module').then( m => m.PaymentPageModule)
   },
+
 
 
 //   {    path: 'tabs',

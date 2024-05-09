@@ -4,6 +4,7 @@ import { ProductServiceService } from '../services/product-service.service';
 import { CartItemServiceService } from '../services/cart-item-service.service';
 import { Product } from '../models/product.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../client/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -23,11 +24,19 @@ export class HomePage {
   categories: string[] = ['All','Shirts', 'Jeans', 'Shorts', 'Dresses','Jackets','Bags','Shoes','Accessories'];
   showSort=false;
   items:number=0;
-  constructor(private productService: ProductServiceService,private router: Router,private cartItemService:CartItemServiceService) {}
-  
+  isClient:boolean=true;
+  constructor(private productService: ProductServiceService,private router: Router,private cartItemService:CartItemServiceService,private authService:AuthService) {}
+  userRole:string | null='';
   ngOnInit() {
+    this.userRole=this.authService.getRole();
+    console.log(this.userRole)
+    if (this.userRole==="new-seller" ||this.userRole==="seller"){
+      this.router.navigate(['/tabs/home-seller']);
+      this.isClient=false;
+    } 
     this.setItems();
     this.loadProducts();
+   
     }
     navigateToCart(){
       this.router.navigate(['/tabs/mycart']);

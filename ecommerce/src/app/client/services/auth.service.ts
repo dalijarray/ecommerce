@@ -43,8 +43,11 @@ export class AuthService {
     const userData = JSON.parse(localStorage.getItem('userData') || '{}');
     return userData?.ourUsers?.role || ''; // Assurez-vous que la structure des données est correcte avant d'accéder à la propriété "role"
   }
+  getUserId(): string {
+    return localStorage.getItem('userId') || '';
+}
   getRole(): string | null {
-    return localStorage.getItem('role');
+    return localStorage.getItem('userRole');
   }
   
 }
